@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Pet List{% endblock %}
+
+{% block content %}
+
+    <h1 class="display-1">Pets</h1>
+    <h4>Pets available</h6>
+    <div class="row">
+        
+        {% for pet in pets_av %}
+            <figure class="figure col-md-4">
+                <a href="/{{pet.id}}"><img src="{{pet.photo_url}}" class="figure-img img-fluid rounded" alt="{{pet.name}}"/></a>
+                <figcaption class="figure-caption">
+                    <span class="text-success font-weight-bold">{{pet.name}}</span> 
+                    <span class="font-weight-bold"> available! </span> 
+                </figcaption>
+            </figure>
+        {% else %}
+            <div class="col-12">No pets available</div>
+        {% endfor %}
+    </div>
+    <h4 class="mt-5">Pets NOT available</h6>
+    <div class="row">
+        {% for pet in pets_nav %}
+            <figure class="figure col-md-4">
+                <a href="/{{pet.id}}"><img src="{{pet.photo_url}}" class="figure-img img-fluid rounded" alt="{{pet.name}}"/></a>
+                <figcaption class="figure-caption">
+                    <span class="text-success font-weight-bold">{{pet.name}}</span> 
+                    <span class="text-danger"> not </span> available!
+                </figcaption>
+            </figure>
+        {% else %}
+            <div class="col-12">No pets not available</div>
+        {% endfor %}
+    </div>
+    <a href="/add" class="btn btn-success mb-3">Add a Pet</a>
+
+
+{% endblock %}

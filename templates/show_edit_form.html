@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Edit Pet{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-8">
+            <h2 class="card-title">Name: {{ pet.name }}</h2>
+            <h4 class="card-title">Species: {{ pet.species }}</h4>
+            {% if pet.photo_url %}
+            <div class="my-5">
+                <img class="img-fluid rounded-start" src="{{pet.photo_url}}" alt="{{pet.name}}" />
+            </div>
+            {% endif %}
+            {% if pet.age %}<p class="card-text">Age: {{ pet.age }}</p>{% endif %}
+            
+            <h2 class="card-title">Edit Pet</h2>
+
+            <form method="POST">
+                {% include "form.html" %}
+
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-success m-1">Submit</button>
+                    <a href="/" class="btn btn-danger m-1">Go Back</a>
+                </div>
+            </form>
+        </div>
+    </div>        
+
+{% endblock %}

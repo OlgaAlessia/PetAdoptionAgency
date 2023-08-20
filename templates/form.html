@@ -1,0 +1,24 @@
+
+{{ form.hidden_tag() }}
+
+{% for field in form if field.widget.input_type != 'hidden'%}
+<div class="form-group"> 
+
+    
+
+    {% if field == form.available %}
+    <div class="form-check d-flex justify-content-start">
+        {{field.label(class_="form-check-label")}}
+        {{field(class="form-check-input")}}
+    </div>
+    {% else %}
+        {{field.label(class_="form-label")}}
+        {{field(class="form-control")}}
+    {% endif %}
+
+
+    {% for err in field.errors %}
+        <small class="form-text text-danger"> {{err}} </small>
+    {% endfor %}
+</div>
+{% endfor %}
